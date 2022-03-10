@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add/Edit Product</title>
+</head>
+<body>
+	<form action="/submitData" method="post" enctype="multipart/form-data">
+		<table align="center">
+			<tr>
+				<td><input type="hidden" name="txtid" value="<%= productList._id ? productList._id : '' %>"></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input type="text" name="name" value="<%= productList.name ? productList.name : '' %>"></td>
+			</tr>
+			<tr>
+				<td>Price:</td>
+				<td><input type="text" name="price" value="<%= productList.price ? productList.price : '' %>"></td>
+			</tr>
+			<tr>
+				<td>Sale:</td>
+				<td>
+					<input type="radio" name="sale" value="yes" <%= (productList.sale == 'yes') ? "checked" : 'checked' %> >Yes
+					<input type="radio" name="sale" value="no" <%= (productList.sale == 'no') ? "checked" : '' %>>No
+				</td>
+			</tr>
+			<tr>
+				<td>Category:</td>
+				<td>
+					<select name="category">
+						<option value="electronics" <%= (productList.category == 'electronics') ? "selected" : '' %>>Electronics</option>
+						<option value="cosmetics" <%= (productList.category == 'cosmetics') ? "selected" : '' %>>Cosmetics</option>
+						<option value="food" <%= (productList.category == 'food') ? "selected" : '' %>>Food</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Upload image:</td>
+				<td>
+					<input type="file" name="pimg">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="submit" value="Save">
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product List</title>
+</head>
+<body>
+	<a href='/logout'>Logout</a>
+	<h3>Welcome, <%= username ? username : '' %></h3>
+	<a href="/addProduct">Add product</a>
+	<form action="/searchProduct" method="post">
+		Search : <input type="text" name="txtsearch" placeholder="Name.."><input type="text" name="txtsearchprice" placeholder="price">
+		<input type="submit" name="submit" value="Search">
+	</form>
+	<table align="center" border="1">
+		<tr>
+			<td colspan="6" align="center">Product List</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>Price</td>
+			<td>Sale</td>
+			<td>Category</td>
+			<td>Image</td>
+			<td>Edit</td>
+			<td>Delete</td>
+		</tr>
+		<% productList.forEach(function(key){ %>
+		<tr>
+			<td><%= key.name %></td>
+			<td><%= key.price %></td>
+			<td><%= key.sale %></td>
+			<td><%= key.category %></td>
+			<td><img src="./<%= key.pimg %>" width="90px"></td>
+			<td><a href="/editProduct/<%= key._id %>">Edit</a></td>
+			<td><a href="/deleteProduct/<%= key._id %>">Delete</a></td>
+		</tr>
+		<% }); %>
+	</table>
+</body>
+</html>
