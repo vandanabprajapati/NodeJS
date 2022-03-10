@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Book Data</title>
+</head>
+<body>
+	<h3><%= username ? username : '' %></h3>
+	<a href="/logout">Logout</a>
+	<a href="/addBook">Add Book</a>
+	<form action="/searchBook" method="POST">
+		<input type="text" name="txtsearch">
+		<input type="submit" name="search" value="search">	
+	</form>
+	
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Author</th>
+			<th>Price</th>
+			<th>Category</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<% bookList.forEach(function(key){ %>
+		<tr>
+			<td><%= key.name %></td>
+			<td><%= key.author %></td>
+			<td><%= key.price %></td>
+			<td><%= key.category %></td>
+			<td><a href="/editBook/<%= key._id %>">Edit</a></td>
+			<td><a href="/deleteBook/<%= key._id %>">Delete</a></td>
+		</tr>
+		<% }); %>
+	</table>
+</body>
+</html>

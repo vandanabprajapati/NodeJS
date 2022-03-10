@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add/Edit Book</title>
+</head>
+<body>
+	<form action="/submitData" method="POST">
+		<input type="hidden" name="txtid" value="<%= bookList._id ? bookList._id : '' %>">
+		Name:<input type="text" name="name" value="<%= bookList.name ? bookList.name : '' %>"><br>
+		Author:<input type="text" name="author" value="<%= bookList.author ? bookList.author : '' %>"><br>
+		Price:<input type="text" name="price" value="<%= bookList.price ? bookList.price : '' %>"><br>
+		Category:<select name="category">
+			<option value="c" <%= (bookList.category == 'c') ? "selected" : '' %>>C</option>
+			<option value="os" <%= (bookList.category == 'os') ? "selected" : '' %>>OS</option>
+			<option value="java" <%= (bookList.category == 'java') ? "selected" : '' %>>Java</option>
+		</select>
+		<input type="submit" name="submit" value="Save">
+	</form>
+</body>
+</html>
